@@ -4,27 +4,32 @@ import java.util.*;
 
 public class Palindrome {
 
-
-    //main entry point for JVM, it looks for starting project
     public static void main(String[] args) {
-        int[] nums = {2,3,4,5,5,6,3};
-        int target = 2;
+        String test = "ABBA";
 
-        TwoSum(nums, target);
-    }
-
-    private static int[]  TwoSum(int[] nums, int target) {
-
-        Map<Integer, Integer> map  = new HashMap<>();
-        for (int i = 0; i < nums.length ; i++) {
-            int complement = target - nums[i];
-            System.out.println(complement);
-            if(map.containsKey(complement)){
-                return new int[]{map.get(complement), i};
-            }
+        Boolean validPalindrom = validPalindrom(test);
+        if(validPalindrom){
+            System.out.println("  valid palindrom "+test);
 
         }
-        return new int[]{};
+    }
+
+    private static Boolean validPalindrom(String test) {
+
+        int left = 0;
+        int right = test.length() -1;
+
+        while (left < right){
+            if(test.charAt(left) != test.charAt(right)){
+                System.out.println("Not valid palindrom "+test);
+                return false;
+            }
+
+            left+=1;
+            right-=1;
+
+        }
+        return true;
     }
 
 }
